@@ -1,0 +1,341 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Widgets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="styleshhet"
+        href="jQuery-Plugin-For-Horizontal-Floating-Social-Share-Bar/dist/jquery.floating-social-share.min.css">
+    <link rel="styleshhet" href="digital-analog/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"> </script>
+    <script src="jQuery-Plugin-For-Displaying-Real-Time-Weather-Conditions-Open-Weather/src/openweather.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+        src="http://informers.sinoptik.ua/js3.php?title=3&wind=1&cities=303010783,303027839,303024521,303010892,303008769&lang=ru"></script>
+
+</head>
+
+<style>
+    #floatingSocialShare {
+        position: relative
+    }
+
+    #floatingSocialShare *,
+    #floatingSocialShare :after,
+    #floatingSocialShare :before {
+        -webkit-box-sizing: content-box !important;
+        -moz-box-sizing: content-box !important;
+        box-sizing: content-box !important
+    }
+
+    #floatingSocialShare a {
+        position: relative;
+        width: 45px;
+        height: 30px;
+        line-height: 20px;
+        padding: 8px 0;
+        display: list-item;
+        list-style-type: none;
+        text-align: center;
+        color: #fff;
+        outline: 0 none !important
+    }
+
+    #floatingSocialShare a:focus,
+    #floatingSocialShare a:hover {
+        color: #fff;
+        width: 52px;
+        opacity: .8;
+        transition-duration: .3s;
+        transition-property: right;
+        transition-timing-function: ease-out
+    }
+
+    #floatingSocialShare a:active,
+    #floatingSocialShare a:focus,
+    #floatingSocialShare a:hover,
+    #floatingSocialShare a:visited {
+        outline: 0 none !important
+    }
+
+    #floatingSocialShare svg {
+        fill: #fff;
+        height: 30px
+    }
+
+    #floatingSocialShare a.without-counter svg {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center
+    }
+
+    #floatingSocialShare a.with-counter-desktop {
+        height: 38px
+    }
+
+    #floatingSocialShare .shareCount {
+        position: absolute;
+        top: 36px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        color: #fff;
+        font-size: 10px
+    }
+
+    #floatingSocialShare .content-left,
+    #floatingSocialShare .content-right,
+    #floatingSocialShare .top-left,
+    #floatingSocialShare .top-right {
+        position: fixed;
+        top: 25%;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0)
+    }
+
+    #floatingSocialShare .top-left {
+        left: 0
+    }
+
+    #floatingSocialShare .top-right {
+        right: 0;
+        direction: rtl
+    }
+
+    #floatingSocialShare .content-left {
+        margin: 0
+    }
+
+    #floatingSocialShare .content-right {
+        margin: 0
+    }
+
+    #floatingSocialShare .mail {
+        background-color: #d14836
+    }
+
+    #floatingSocialShare .facebook {
+        background-color: #1877f2
+    }
+
+    #floatingSocialShare .linkedin {
+        background-color: #0077b5
+    }
+
+    #floatingSocialShare .odnoklassniki {
+        background-color: #ee8208
+    }
+
+    #floatingSocialShare .pinterest {
+        background-color: #bd081c
+    }
+
+    #floatingSocialShare .reddit {
+        background-color: #ff4500
+    }
+
+    #floatingSocialShare .telegram {
+        background-color: #2ca5e0
+    }
+
+    #floatingSocialShare .tumblr {
+        background-color: #36465d
+    }
+
+    #floatingSocialShare .twitter {
+        background-color: #1da1f2
+    }
+
+    #floatingSocialShare .viber {
+        background-color: #665cac
+    }
+
+    #floatingSocialShare .vk {
+        background-color: #4680c2
+    }
+
+    #floatingSocialShare .whatsapp {
+        background-color: #25d366
+    }
+
+    @media only screen and (max-width:961px) {
+        #floatingSocialShare {
+            margin-top: 50px
+        }
+
+        #floatingSocialShare .content-left,
+        #floatingSocialShare .content-right,
+        #floatingSocialShare .top-left,
+        #floatingSocialShare .top-right {
+            top: auto;
+            bottom: 0;
+            margin: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999
+        }
+
+        #floatingSocialShare a {
+            position: relative;
+            float: left;
+            display: list-item;
+            list-style-type: none
+        }
+
+        #floatingSocialShare a:focus,
+        #floatingSocialShare a:hover {
+            -moz-transition-property: none;
+            -webkit-transition-property: none;
+            -o-transition-property: none;
+            transition-property: none
+        }
+
+        #floatingSocialShare svg {
+            height: 24px
+        }
+
+        #floatingSocialShare .shareCount {
+            top: 30px
+        }
+    }
+</style>
+
+<body style="display: flex; flex-direction: column; align-items: center; width: 100%; margin: 40px;">
+    <div id="slider-block">
+        <div style="width: 400px" id="slider"></div>
+        <p>Current value: <span style="color: rgb(253, 121, 198); font-weight: bold;" id="result-slider"></span></p>
+    </div>
+    <div id="datepickers">
+        <p>Date: <input id="datepicker2"> </p>
+    </div>
+    <div id="weather">
+
+        <link type="text/css" rel="stylesheet" href="https://www.meteoprog.ua/css/winformer.min.css?id=100">
+
+        <div class="meteoprog-informer" style="width: 260px"
+            data-params='{"city_ids":"2863","domain":"https://www.meteoprog.ua/ua","id":"609a1bd12bac92ab638b482e","lang":"ua"}'>
+
+
+            <a title="Погода в місті Хмельницький" target="_blank"
+                href="https://www.meteoprog.ua/ua/weather/Khmelnytskyi">
+                <img style="margin: 0 auto; display: block" src="https://www.meteoprog.ua/images/preloader.gif"
+                    alt="Loading...">
+            </a>
+            <a target="_blank" class="constructor__met2wlink"
+                href="https://www.meteoprog.ua/ua/review/Khmelnytskyi/">Погода на 2 тижні</a>
+
+
+            <a class="constructor__metlink" target="_blank" href="https://www.meteoprog.ua/ua">
+                <img style="display: block; margin: 0 auto;" alt="Meteoprog"
+                    src="https://www.meteoprog.ua/images/meteoprog-inf.png">
+            </a>
+        </div>
+        <script type="text/javascript" src="https://www.meteoprog.ua/js/winformer.min.js?id=100"></script>
+
+    </div>
+    <div id="clock" style="color: plum">
+        <!-- Digital Clock -->
+        <div class="digital" style="display: flex; justify-content: center; width: 400px;">
+            <h1 class="digits hours"></h1>
+            <h1 class='digits'>:</h1>
+            <h1 class="digits minutes"></h1>
+            <h1 class='digits'>:</h1>
+            <h1 class="digits seconds"></h1>
+        </div>
+        <div id="date" style="display: flex; justify-content: space-around; width: 400px;">
+            <h1 class="date day"></h1>
+            <h1 class="date month"></h1>
+            <h1 class="date year"></h1>
+        </div>
+    </div>
+    <div id="currency">
+        <!-- Minfin.com.ua currency informer 312x120 pink-->
+        <div id="minfin-informer-m1Fn-currency">Загружаем <a href="https://minfin.com.ua/currency/"
+                target="_blank">курсы валют</a> от minfin.com.ua</a></div>
+        <script>var iframe = '<ifra' + 'me width="312" height="120" fram' + 'eborder="0" src="https://informer.minfin.com.ua/gen/course/?color=pink" vspace="0" scrolling="no" hspace="0" allowtransparency="true"style="width:312px;height:120px;ove' + 'rflow:hidden;"></iframe>'; var cl = 'minfin-informer-m1Fn-currency'; document.getElementById(cl).innerHTML = iframe;</script>
+        <noscript><img src="https://informer.minfin.com.ua/gen/img.png" width="1" height="1"
+                alt="minfin.com.ua: курсы валют" title="Курс валют" border="0" /></noscript>
+        <!-- Minfin.com.ua currency informer 312x120 pink-->
+    </div>
+    <div>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</body>
+</div>
+</body>
+<script type="text/javascript" src="digital-analog/Index.js"></script>
+<script type="text/javascript"
+    src="jQuery-Plugin-For-Horizontal-Floating-Social-Share-Bar/dist/jquery.floating-social-share.min.js"></script>
+<script>
+    $("#datepicker2").datepicker({
+        showAnim: "slideDown"
+    });
+    $("#slider").slider({
+        animate: "slow",
+        range: "min",
+        value: 50,
+        slide: function (event, ui) {
+            $("#result-slider").text(ui.value);
+        }
+    });
+    $("#result-slider").text($("#slider").slider("value"));
+    $("body").floatingSocialShare({
+        buttons: [
+            "facebook", "linkedin", "pinterest", "telegram", "twitter", "viber", "whatsapp"
+        ],
+        text: "share with: ",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO"
+    });
+
+
+</script>
+<style>
+    .ui-slider {
+        position: relative;
+        background: gainsboro;
+        height: 12px;
+        border-radius: 10px;
+        box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.3), 1px 1px 5px rgba(255, 255, 255, 1);
+    }
+
+    .ui-slider .ui-slider-range {
+        display: block;
+        border: 0;
+        background: rgb(253, 121, 198);
+    }
+
+    .ui-datepicker-calendar .ui-state-active {
+        background: rgb(253, 121, 198);
+        border: none;
+        -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+        -moz-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+        box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+        color: #fff;
+        position: relative;
+    }
+
+    .ui-datepicker th {
+        background-color: #808080;
+        text-transform: uppercase;
+        font-size: 8pt;
+        color: #fff;
+    }
+
+    .ui-datepicker-today a.ui-state-highlight {
+        border-color: #9b91f0;
+        background: #9b91f0;
+        color: #555555;
+    }
+</style>
+
+</html>
